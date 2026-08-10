@@ -250,7 +250,48 @@ if page == "Prediction History":
         history_df["Predicted Price"] = history_df["Predicted Price"].apply(
             lambda x: f"${float(x.decode() if isinstance(x, bytes) else x):,.2f}"
         )
+        
 
+        fuel_filter = st.selectbox(
+            "Filter by Fuel Type",
+            ["All", "gas", "diesel"]
+        )
+        
+        if fuel_filter != "All":
+            history_df = history_df[
+                history_df["Fuel Type"] == fuel_filter
+            ]
+        
+        aspiration_filter = st.selectbox(
+            "Filter by Aspiration",
+            ["All", "std", "turbo"]
+        )
+        
+        if aspiration_filter != "All":
+            history_df = history_df[
+                history_df["Aspiration"] == aspiration_filter
+            ]
+            
+        car_body_filter = st.selectbox(
+            "Filter by Car Body",
+            ["All", "convertible", "hardtop", "hatchback", "sedan", "wagon"]
+        )
+
+        if car_body_filter != "All":
+            history_df = history_df[
+                history_df["Car Body"] == car_body_filter
+            ]
+            
+        drive_wheel_filter = st.selectbox(
+            "Filter by Drive Wheel",
+            ["All", "rwd", "fwd", "4wd"]
+        )
+
+        if drive_wheel_filter != "All":
+            history_df = history_df[
+                history_df["Drive Wheel"] == drive_wheel_filter
+            ]       
+        
         # Columns displayed to the user
         display_df = history_df[
             [
