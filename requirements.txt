@@ -1,10 +1,7 @@
-numpy
-pandas
-xgboost
-joblib
 streamlit
+pandas
+numpy
 scikit-learn
-matplotlib
-seaborn
-scipy
-statsmodels
+joblib
+Pillow
+bcrypt
